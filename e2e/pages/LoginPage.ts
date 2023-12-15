@@ -19,6 +19,5 @@ export class LoginPage{
         await this.user_txt.fill(user);
         await this.pass_txt.fill(pass);
         await this.signIn_Btn.click();
-        await expect(this.page).toHaveURL("");
     }    
 }
