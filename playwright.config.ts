@@ -13,6 +13,8 @@ export default defineConfig({
   testDir: './e2e',
   /* Run tests in files in parallel */
   fullyParallel: true,
+  /*Time Out */
+  timeout: 5 * 60 * 1000,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -24,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://magento.softwaretestingboard.com/',
+    baseURL: 'https://luma-demo.scandipwa.com',
     // headless: false,
     screenshot: "on",
     video: "off",
