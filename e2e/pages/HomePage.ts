@@ -2,14 +2,14 @@ import {Locator, Page, expect} from '@playwright/test';
 
 export class HomePage{
     readonly page: Page;
-    readonly user_txt: Locator;
+    readonly signIn_Btn: Locator;
 
     constructor(page: Page){
         this.page = page;
-        this.user_txt = page.locator("#email");
+        this.signIn_Btn = page.locator("div[class='panel header'] li[class='authorization-link'] a");
     }
 
-    public async enterUserNamePassword(){
-        await this.user_txt.fill("dfsdfsdf");
+    public async clickOn_SignInBtn(){
+        await this.signIn_Btn.click();
     }    
 }
