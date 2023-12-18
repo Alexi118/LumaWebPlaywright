@@ -34,10 +34,10 @@ export default defineConfig({
     trace: 'on-first-retry',
     launchOptions: {
       slowMo: 1000,
-      // headless: false
+      headless: false
     }, 
   },
-  expect: { timeout: 10 * 1000 },
+  expect: { timeout: 20 * 1000 },
 
   /* Configure projects for major browsers */
   projects: [

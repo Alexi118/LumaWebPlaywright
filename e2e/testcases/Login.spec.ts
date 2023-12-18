@@ -17,7 +17,7 @@ test("Login successfully by SignIn on HomePage link", async ({page,baseURL})=>{
     await homePage.goToHomePage();
     await expect(page).toHaveURL(`${baseURL}`);
     await homePage.signIn_Btn.click();
-    await expect(page).toHaveURL(new RegExp('^https://magento.softwaretestingboard.com/customer/account/login'));
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}customer/account/login`));
     await loginPage.action_enterInfoAndSignIn(data.user1.name, data.user1.pass);
     //await page.waitForResponse(resp => resp.url().includes("/customer/section/load") && resp.status() === 200);
     await expect(page).toHaveURL(`${baseURL}`);
