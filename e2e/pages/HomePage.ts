@@ -1,5 +1,5 @@
 import {Locator, Page} from '@playwright/test';
-import { baseURL } from '../data/const';
+import { baseURL } from '../data/constant';
 
 export class HomePage{
     readonly page: Page;

@@ -1,5 +1,5 @@
 import {Locator, Page} from '@playwright/test';
-import { baseURL } from '../data/const';
+import { baseURL } from '../data/constant';
 
 export class LoginPage{
     readonly page: Page;
@@ -23,9 +23,11 @@ export class LoginPage{
         this.page.goto(`${baseURL}customer/account/login`);
     }
 
-    async action_enterInfoAndSignIn(user: string, pass: string){
+    async action_Loginsuccessfully_ThenRedirectToHomePage(user: string, pass: string){
+        await this.goToLoginPage();
         await this.user_txt.fill(user);
         await this.pass_txt.fill(pass);
         await this.signIn_Btn.click();
+        await this.luma_logo.click();
     }    
 }
