@@ -1,4 +1,5 @@
-import {Locator, Page, expect} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
+import { baseURL } from '../data/const';
 
 export class LoginPage{
     readonly page: Page;
@@ -6,6 +7,7 @@ export class LoginPage{
     readonly pass_txt: Locator;
     readonly signIn_Btn: Locator;
     readonly userNameSignedIn_txt: Locator;
+    readonly luma_logo: Locator;
 
 
     constructor(page: Page){
@@ -14,10 +16,11 @@ export class LoginPage{
         this.pass_txt = page.locator("input[title=Password]");
         this.signIn_Btn = page.locator("button[class='action login primary']");
         this.userNameSignedIn_txt = page.locator(".box-content p");
+        this.luma_logo = page.locator(".logo");
     }
 
     async goToLoginPage(){
-        this.page.goto("https://magento.softwaretestingboard.com/customer/account/login");
+        this.page.goto(`${baseURL}customer/account/login`);
     }
 
     async action_enterInfoAndSignIn(user: string, pass: string){
