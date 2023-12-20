@@ -3,19 +3,17 @@ import { baseURL } from '../data/constant';
 
 export class HomePage{
     readonly page: Page;
-    readonly signIn_Btn: Locator;
-    readonly userNameWelcome_txt: Locator;
-    readonly women_NavigationMenu: Locator;
-    readonly top_women_NavigationMenu: Locator;
-    readonly jackets_women_NavigationMenu: Locator;
-
+    readonly account_icon: Locator;
+    readonly email_txt: Locator;
+    readonly pass_txt: Locator;
+    readonly signin_btn: Locator;
+    
     constructor(page: Page){
         this.page = page;
-        this.signIn_Btn = page.locator("div[class='panel header'] li[class='authorization-link'] a");
-        this.userNameWelcome_txt = page.locator("ul[class='header links']:nth-child(2) .logged-in");
-        this.women_NavigationMenu = page.locator("#ui-id-4");
-        this.top_women_NavigationMenu = page.locator("#ui-id-9");
-        this.jackets_women_NavigationMenu = page.locator("#ui-id-11");
+        this.account_icon = page.locator("#myAccount svg");
+        this.email_txt = page.locator("#email");
+        this.pass_txt = page.locator("#password");
+        this.signin_btn = page.locator(".MyAccountOverlay-SignInButton button");
     }
 
     async goToHomePage(){
@@ -23,7 +21,7 @@ export class HomePage{
     }
 
     async clickOn_SignInBtn(){
-        await this.signIn_Btn.click();
+        await this.signin_btn.click();
     }
     
     async action_selectJacketsForWomen(){
