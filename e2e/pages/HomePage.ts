@@ -1,5 +1,4 @@
-import {Locator, Page} from '@playwright/test';
-import { baseURL } from '../data/constant';
+import {Locator, Page, expect} from '@playwright/test';
 
 export class HomePage{
     readonly page: Page;
@@ -17,9 +16,14 @@ export class HomePage{
     }
 
     async goToHomePage(){
-        this.page.goto(baseURL);
+        await this.page.goto('/');
     }
     
-    async action_selectJacketsForWomen(){
+    async action_Login(email:string, pass:string){
+        await this.goToHomePage();
+        await this.account_icon.click();
+        await this.email_txt.fill(email);
+        await this.pass_txt.fill(pass);
+        await this.signin_btn.click();
     }
 }
