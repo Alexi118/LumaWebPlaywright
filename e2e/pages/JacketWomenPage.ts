@@ -1,5 +1,4 @@
 import {Locator, Page} from '@playwright/test';
-import { baseURL } from '../data/const';
 
 export class JacketWomenPage{
     readonly jackets_pageTitle;

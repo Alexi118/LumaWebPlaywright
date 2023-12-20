@@ -19,14 +19,7 @@ export class HomePage{
     async goToHomePage(){
         this.page.goto(baseURL);
     }
-
-    async clickOn_SignInBtn(){
-        await this.signin_btn.click();
-    }
     
     async action_selectJacketsForWomen(){
-        await this.women_NavigationMenu.hover();
-        await this.top_women_NavigationMenu.hover();
-        await this.jackets_women_NavigationMenu.click();
     }
 }
