@@ -2,10 +2,10 @@ import { expect, test} from '../common/fixtures';
 import data from "../data/loginData.json"
 
 
-test.beforeEach('Go to loginPage', async ({loginPage,page})=>{
+test.beforeEach('Go to loginPage', async ({loginPage})=>{
     await loginPage.action_Login_ThenRedirectToHomePage(data.correctUser.name,data.correctUser.pass);
 })
-test("Login successfully by SignIn on Login link", async ({loginPage,page})=>{
+test("Login successfully by SignIn on Login link", async ({loginPage})=>{
     await expect(loginPage.logout_btn).toBeVisible();
 })
 // test("Login UnSuccessfully caused by empty email field", async ({page,baseURL})=>{

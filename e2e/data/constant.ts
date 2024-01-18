@@ -1,1 +1,1 @@
-export const baseURL = "https://magento.softwaretestingboard.com/"
+export const baseURL = "https://luma-demo.scandipwa.com"

@@ -2,7 +2,7 @@ import { expect, test} from '../common/fixtures';
 import data from "../data/loginData.json"
 
 
-test.beforeEach('Go to homepage', async ({homePage,page})=>{
+test.beforeEach('Go to homepage', async ({homePage})=>{
     await homePage.action_Login(data.correctUser.name,data.correctUser.pass);
 })
 test("Login successfully by SignIn on HomePage link", async ({loginPage,page})=>{
