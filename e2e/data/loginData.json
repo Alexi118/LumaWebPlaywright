@@ -1,14 +1,14 @@
 {
     "correctUser":{
-        "name": "cuongnd11@gmail.com",
+        "name": "cuongnd118@gmail.com",
         "pass": "1234@4321a"
     },
     "wrongPassUser":{
         "name": "cuongnd118@gmail.com",
-        "pass": "1234@4321a"
+        "pass": "1234@a"
     },
     "wrongEmailUser":{
         "name": "cuongnd11@gmail.com",
-        "pass": "123456@4321a"
+        "pass": "1234@4321a"
     }
 }
