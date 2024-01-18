@@ -14,11 +14,13 @@ export const test = base.extend<BaseTest>({
         await use(page);
     },
     loginPage: async ({page},use)=>{
+        await ignoreLoadingImagesRoute(page);
         const loginPage = new LoginPage(page);
         await use(loginPage);
     },
     //short
     homePage:async ({page},use) => {
+        await ignoreLoadingImagesRoute(page);
         await use(new HomePage(page));
     },
 });
