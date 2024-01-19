@@ -8,5 +8,6 @@ test.describe("Test Full E2E Flow",()=>{
     })
 
     test("Test purchasing & paid successfully 1 item",async ({page}) => {
+        page.waitForURL("",{waitUntil: 'domcontentloaded'});
     })
 })

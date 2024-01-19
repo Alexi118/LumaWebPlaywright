@@ -1,6 +1,5 @@
 import { expect, test} from '../common/fixtures';
-import data from "../data/loginData.json"
-
+import data from "../data/loginData.json";
 
 test.beforeEach('Go to homepage', async ({homePage})=>{
     await homePage.action_Login(data.correctUser.name,data.correctUser.pass);
