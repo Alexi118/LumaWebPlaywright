@@ -14,7 +14,7 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: false,
   /*Time Out */
-  timeout: 30 * 1000,
+  timeout: 2 * 60 * 1000,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -34,7 +34,6 @@ export default defineConfig({
     trace: 'on-first-retry',
     launchOptions: {
       slowMo: 5000,
-      headless: false
     }, 
   },
   expect: { timeout: 30 * 1000 },
