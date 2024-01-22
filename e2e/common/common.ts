@@ -1,4 +1,5 @@
-import { Locator } from "@playwright/test";
+import {Locator, Page, expect} from '@playwright/test';
+import { OptionType } from '../enum/dropdownOptionType';
 
 export const getFloatInTextofElement = async (element: Locator)=>{
     let result = (await element.innerText()).match(/[-+]?\d*\.\d+|\d+/g);
@@ -54,4 +55,15 @@ export const sortListFromHtoL = (listOfElements:string[])=>{
     numbers.sort((a, b) => b - a);
     const sortedString = numbers.map((number)=>number.toString());
     return sortedString;
+};
+
+export const selectDropDown = async(element:Locator , page:Page, selectBy: OptionType, value:any)=>{
+    switch(selectBy){
+        case OptionType.VALUE:
+            return await element.selectOption(value);
+        case OptionType.LABEL:
+            return await element.selectOption({label: value});
+        case OptionType.INDEX:
+            return await element.selectOption({index: value});    
+    }
 };
