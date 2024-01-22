@@ -7,7 +7,6 @@ test.beforeEach('Go to homepage', async ({homePage})=>{
 test("Login successfully by SignIn on HomePage link", async ({loginPage,page})=>{
     await loginPage.account_icon.click();
     await expect(page.getByText('Logout')).toBeVisible();
-    await page.pause();
 })
 // test("Login UnSuccessfully caused by empty email field", async ({page,baseURL})=>{
 // })

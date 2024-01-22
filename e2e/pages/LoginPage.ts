@@ -10,6 +10,7 @@ export class LoginPage{
     readonly signin_btn: Locator;
     readonly logout_btn: Locator;
     readonly spinning_icon: Locator;
+    readonly home_breadcrumb: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -19,6 +20,7 @@ export class LoginPage{
         this.signin_btn = page.locator(".MyAccountOverlay-SignInButton button");
         this.logout_btn = page.getByText('Logout');
         this.spinning_icon = page.locator('.Loader-Main');
+        this.home_breadcrumb = page.locator('.Breadcrumb-Link').getByText('Home');
     }
 
     async goToLoginPage(){
