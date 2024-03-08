@@ -11,10 +11,6 @@ type BaseTest = {
 };
 
 export const test = base.extend<BaseTest>({
-    page: async({page},use)=>{
-        await ignoreLoadingImagesRoute(page);
-        await use(page);
-    },
     loginPage: async ({page},use)=>{
         await ignoreLoadingImagesRoute(page);
         const loginPage = new LoginPage(page);

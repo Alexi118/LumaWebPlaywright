@@ -1,19 +1,18 @@
 import {Locator, Page, expect} from '@playwright/test';
-import { OptionType } from '../enum/dropdownOptionType';
 
-export const getFloatInTextofElement = async (element: Locator)=>{
+export async function getFloatInTextofElement (element: Locator){
     let result = (await element.innerText()).match(/[-+]?\d*\.\d+|\d+/g);
     let resultString = result ? result.toString() : "";
     return resultString;
 };
 
-export const getFloatInListTextOfElements = async (listOfElements:Locator)=>{
+export async function getFloatInListTextOfElements (listOfElements:Locator){
         let result = (await listOfElements.allInnerTexts()).map(x=>x.match(/[-+]?\d*\.\d+|\d+/g));
         let resultString = result.map(x=>x? x.toString() : "");
         return resultString;
 };
 
-export const getSumOfListElements = async (listOfElements:Locator)=>{
+export async function getSumOfListElements (listOfElements:Locator){
     let sum = 0;
     const number = (await getFloatInListTextOfElements(listOfElements)).map(parseFloat);
     number.forEach(num=>{
@@ -29,41 +28,30 @@ export const getSumOfListElements = async (listOfElements:Locator)=>{
 //     return tax.toFixed(2).toString();
 // };
 
-export const sumOfTwoNumberInString = (num1:string, num2:string)=>{
+export async function sumOfTwoNumberInString (num1:string, num2:string){
     let sum = 0;
     sum = parseFloat(num1) + parseFloat(num2);
     return sum.toFixed(2).toString();
 };
 
-export const sortListFromAtoZ = (listOfElements:string[])=>{
+export async function sortListFromAtoZ (listOfElements:string[]){
     return listOfElements.sort();
 };
 
-export const sortListFromZtoA = (listOfElements:string[])=>{
+export async function sortListFromZtoA (listOfElements:string[]){
     return listOfElements.reverse();
 };
 
-export const sortListFromLtoH = (listOfElements:string[])=>{
+export async function sortListFromLtoH (listOfElements:string[]){
     const numbers = listOfElements.map(parseFloat);
     numbers.sort((a, b) => a - b);
     const sortedString = numbers.map((number)=>number.toString());
     return sortedString;
 };
 
-export const sortListFromHtoL = (listOfElements:string[])=>{
+export async function sortListFromHtoL (listOfElements:string[]){
     const numbers = listOfElements.map(parseFloat);
     numbers.sort((a, b) => b - a);
     const sortedString = numbers.map((number)=>number.toString());
     return sortedString;
-};
-
-export const selectDropDown = async(element:Locator , page:Page, selectBy: OptionType, value:any)=>{
-    switch(selectBy){
-        case OptionType.VALUE:
-            return await element.selectOption(value);
-        case OptionType.LABEL:
-            return await element.selectOption({label: value});
-        case OptionType.INDEX:
-            return await element.selectOption({index: value});    
-    }
 };
