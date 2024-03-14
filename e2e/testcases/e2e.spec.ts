@@ -8,7 +8,7 @@ test.describe("Test Full E2E Flow",()=>{
     test.beforeEach("Login successfully & redirect to Homepage",async ({page,homePage,loginPage})=>{
         await homePage.action_Login(data.correctUser.name,data.correctUser.pass);
         await loginPage.account_icon.click();
-        await commonAction.verifyUrl(page, URLPath.link.)
+        await commonAction.verifyUrl(page, URLPath.link.ACCOUNT);
         await expect(page.getByText('Logout')).toBeVisible();
         await loginPage.home_breadcrumb.click();
     })
