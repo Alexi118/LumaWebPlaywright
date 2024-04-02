@@ -56,14 +56,3 @@ export const sortListFromHtoL = (listOfElements:string[])=>{
     const sortedString = numbers.map((number)=>number.toString());
     return sortedString;
 };
-
-export const selectDropDown = async(element:Locator , page:Page, selectBy: OptionType, value:any)=>{
-    switch(selectBy){
-        case OptionType.VALUE:
-            return await element.selectOption(value);
-        case OptionType.LABEL:
-            return await element.selectOption({label: value});
-        case OptionType.INDEX:
-            return await element.selectOption({index: value});    
-    }
-};

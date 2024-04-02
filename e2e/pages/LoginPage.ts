@@ -1,6 +1,7 @@
 import {Locator, Page} from '@playwright/test';
-import { baseURL } from '../data/constant';
 import { expect } from '@playwright/test';
+import { goToPage } from '../common/commonAction';
+import {link} from '../enum/route'
 
 export class LoginPage{
     readonly page: Page;
@@ -23,12 +24,8 @@ export class LoginPage{
         this.home_breadcrumb = page.locator('.Breadcrumb-Link').getByText('Home');
     }
 
-    async goToLoginPage(){
-        this.page.goto('/customer/account/login');
-    }
-
-    async action_Login_ThenRedirectToHomePage(email: string, pass: string){
-        await this.goToLoginPage();
+    async action_Login_ThenRedirectToHomePage(page: Page, email: string, pass: string){
+        await goToPage(page, link.LOGIN);
         await this.email_txt.fill(email);
         await this.pass_txt.fill(pass);
         await this.signin_btn.click();
