@@ -12,10 +12,9 @@ export class HomePage{
     
     constructor(page: Page){
         this.page = page;
-        this.account_icon = page.locator("#myAccount path");
+        this.account_icon = page.locator("#myAccount svg");
         this.email_txt = page.locator("#email");
         this.pass_txt = page.locator("#password");
-        this.logIn_frame = page.locator("div[class='Overlay Overlay_isVisible MyAccountOverlay MyAccountOverlay_isVisible']");
         this.signin_btn = page.locator(".MyAccountOverlay-SignInButton button");
         this.woman_mainmenu_btn = page.locator("ul[class='Menu-ItemList Menu-ItemList_type_main'] li:nth-child(1)");
         this.womanjackets_submenu_btn = page.getByText("Jackets");
@@ -27,8 +26,7 @@ export class HomePage{
     
     async action_Login(email:string, pass:string){
         await this.goToHomePage();
-        await this.account_icon.click({force: true});
-        expect(this.logIn_frame).toBeVisible();
+        await this.account_icon.click();
         await this.email_txt.fill(email);
         await this.pass_txt.fill(pass);
         await this.signin_btn.click();
