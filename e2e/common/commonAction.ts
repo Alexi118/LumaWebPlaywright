@@ -15,15 +15,21 @@ export function selectDropDown (element:Locator, selectBy: OptionType, value:any
 
 export async function verifyUrl(page: Page, expectedUrl: string){
     await page.reload();
-    if(expectedUrl = baseURL){
-        return await page.waitForURL(`${baseURL}`, {waitUntil: 'domcontentloaded'});
+    if(expectedUrl == baseURL){
+        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load'});
     }
-    else
-        return await page.waitForURL(`${baseURL}${expectedUrl}`, {waitUntil: 'domcontentloaded'});
+    else if(expectedUrl !== baseURL){
+        return await page.waitForURL(`${baseURL}${expectedUrl}`, {waitUntil: 'load'});
+    }
 }
 
 export async function goToPage(page: Page, link: string){
-    await page.goto(`${baseURL}${link}`);
+    if(link == baseURL){
+        await page.goto(`${baseURL}`);
+    }
+    else if(link !== baseURL){
+        await page.goto(`${baseURL}${link}`);
+    }
     await checkThenAcceptCookieConsent(page);
 }
 

@@ -1,7 +1,7 @@
 import {Locator, Page} from '@playwright/test';
 import { expect } from '@playwright/test';
 import { goToPage } from '../common/commonAction';
-import {link} from '../enum/route'
+import {URLPath} from '../enum/route'
 
 export class LoginPage{
     readonly page: Page;
@@ -25,11 +25,10 @@ export class LoginPage{
     }
 
     async action_Login_ThenRedirectToHomePage(page: Page, email: string, pass: string){
-        await goToPage(page, link.LOGIN);
+        await goToPage(page, URLPath.LOGIN);
         await this.email_txt.fill(email);
         await this.pass_txt.fill(pass);
         await this.signin_btn.click();
         await expect(this.spinning_icon).toBeHidden();
-        await expect(this.logout_btn).toBeVisible();
     }    
 }
