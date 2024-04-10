@@ -24,8 +24,8 @@ export class LoginPage{
         this.home_breadcrumb = page.locator('.Breadcrumb-Link').getByText('Home');
     }
 
-    async action_Login_ThenRedirectToHomePage(page: Page, email: string, pass: string){
-        await goToPage(page, URLPath.LOGIN);
+    async action_Login_LoginPage(page: Page, email: string, pass: string){
+        await goToPage(page, URLPath.ACCOUNTLOGIN);
         await this.email_txt.fill(email);
         await this.pass_txt.fill(pass);
         await this.signin_btn.click();
