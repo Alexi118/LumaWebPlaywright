@@ -13,22 +13,21 @@ export function selectDropDown (element:Locator, selectBy: OptionType, value:any
     }
 };
 
-export async function verifyUrl(page: Page, expectedUrl: string){
-    await page.reload();
-    if(expectedUrl == baseURL){
-        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load'});
+export async function verifyUrl(page: Page, link?: string){
+    if(link){
+        return await page.waitForURL(`${baseURL}${link}`, {waitUntil: 'load'});
     }
-    else if(expectedUrl !== baseURL){
-        return await page.waitForURL(`${baseURL}${expectedUrl}`, {waitUntil: 'load'});
+    else{
+        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load'});
     }
 }
 
-export async function goToPage(page: Page, link: string){
-    if(link == baseURL){
-        await page.goto(`${baseURL}`);
-    }
-    else if(link !== baseURL){
+export async function goToPage(page: Page, link?: string){
+    if(link){
         await page.goto(`${baseURL}${link}`);
+    }
+    else {
+        await page.goto(`${baseURL}`);
     }
     await checkThenAcceptCookieConsent(page);
 }

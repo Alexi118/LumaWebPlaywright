@@ -22,8 +22,15 @@ test.describe("Test Full E2E Flow",()=>{
     //     await jacketPage.action_AddToCart_FirstJacket();
     // })
 
-    test("test",async ({page}) => {
-        await commonAction.goToPage(page, URLPath.ACCOUNT);
-        await commonAction.verifyUrl(page, URLPath.ACCOUNT);
+    // test("test",async ({page}) => {
+    //     await commonAction.goToPage(page, URLPath.ACCOUNT);
+    //     await commonAction.verifyUrl(page, URLPath.ACCOUNT);
+    //     await page.pause();
+    // })
+
+    test("test2",async ({page}) => {
+        await commonAction.goToPage(page);
+        await commonAction.verifyUrl(page);
+        await page.pause();
     })
 })

@@ -11,6 +11,10 @@ type BaseTest = {
 };
 
 export const test = base.extend<BaseTest>({
+    page: async ({ page }, use) => {
+        await ignoreLoadingImagesRoute(page);
+        await use(page);
+    },
     loginPage: async ({page},use)=>{
         await ignoreLoadingImagesRoute(page);
         const loginPage = new LoginPage(page);
@@ -26,5 +30,7 @@ export const test = base.extend<BaseTest>({
         await use(new JacketsPage(page));
     },
 });
+
+export const testWithImageLoaded = base.extend({});
 
 export {expect} from '@playwright/test';
