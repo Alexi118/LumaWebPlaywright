@@ -9,6 +9,7 @@ export class HomePage{
     readonly signin_btn: Locator;
     readonly woman_mainmenu_btn: Locator;
     readonly womanjackets_submenu_btn: Locator;
+    readonly welcome_txt: Locator;
     
     constructor(page: Page){
         this.page = page;
@@ -18,6 +19,7 @@ export class HomePage{
         this.signin_btn = page.locator(".MyAccountOverlay-SignInButton button");
         this.woman_mainmenu_btn = page.locator("ul[class='Menu-ItemList Menu-ItemList_type_main'] li:nth-child(1)");
         this.womanjackets_submenu_btn = page.getByText("Jackets");
+        this.welcome_txt =page.locator(".Header-Welcome");
     }
 
     async goToHomePage(){
