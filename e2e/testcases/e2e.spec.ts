@@ -2,14 +2,12 @@ import { expect, test} from '../common/fixtures';
 import data from "../data/loginData.json";
 import * as commonAction from "../common/commonAction"
 import {URLPath} from "../enum/route"
-import { baseURL } from '../data/constant';
-import { HomePage } from '../pages/HomePage';
 
 test.describe("Test Full E2E Flow",()=>{
 
     test.beforeEach("Login successfully & redirect to Homepage",async ({page,loginPage, homePage})=>{
         await loginPage.action_Login_LoginPage(page, data.correctUser.name,data.correctUser.pass);
-        expect(await page.getByText('Logout')).toBeVisible();
+        expect(page.getByText('Logout')).toBeVisible();
         await commonAction.verifyUrl(page, URLPath.ACCOUNT);
         await commonAction.goToPage(page);
         await commonAction.verifyUrl(page);
