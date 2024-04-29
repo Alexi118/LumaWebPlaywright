@@ -1,13 +1,16 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
-import { ignoreLoadingRoutes } from './ignoreLoadingRoutes';
 import { JacketsPage } from '../pages/JacketsPage';
+import { FirstJacketPage } from '../pages/FirstJacketPage'
+
+import { ignoreLoadingRoutes } from './ignoreLoadingRoutes';
 
 type BaseTest = {
     loginPage: LoginPage;
     homePage: HomePage;
     jacketPage: JacketsPage;
+    firstJacketPage: FirstJacketPage;
 };
 
 export const test = base.extend<BaseTest>({
@@ -25,6 +28,10 @@ export const test = base.extend<BaseTest>({
         await ignoreLoadingRoutes(page);
         await use(new JacketsPage(page));
     },
+    firstJacketPage:async({page},use) => {
+        await ignoreLoadingRoutes(page);
+        await use(new FirstJacketPage(page));
+    }
 });
 
 export const testWithImageLoaded = base.extend({});

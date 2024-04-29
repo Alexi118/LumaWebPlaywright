@@ -1,6 +1,6 @@
 import {Locator, Page} from '@playwright/test';
 
-export class FirstItem{
+export class FirstJacketPage{
     readonly page: Page;
     readonly item_Title: Locator;
     readonly color_selector: Locator;

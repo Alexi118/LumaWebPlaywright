@@ -1,6 +1,6 @@
 export enum URLPath{
-    ACCOUNTLOGIN = '/customer/account/login',
-    ACCOUNT = '/customer/account',
-    WOMEN = '/women',
-    ERIKARUNNINGSHORT = '/erika-running-short'
+    ACCOUNTBEFORELOGIN = '/customer/account/login',
+    ACCOUNTAFTERLOGIN = '/customer/account',
+    WOMEN = '/women.html',
+    OLIVIAZIPLIGHTJACKET = '/olivia-1-4-zip-light-jacket.html'
 }

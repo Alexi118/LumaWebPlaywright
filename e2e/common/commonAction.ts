@@ -15,10 +15,10 @@ export function selectDropDown (element:Locator, selectBy: OptionType, value:any
 
 export async function verifyUrl(page: Page, link?: string){
     if(link){
-        return await page.waitForURL(`${baseURL}${link}`, {waitUntil: 'load'});
+        return await page.waitForURL(`${baseURL}${link}`, {waitUntil: 'load',timeout: 30000});
     }
     else{
-        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load'});
+        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load',timeout: 30000});
     }
 }
 
@@ -39,5 +39,7 @@ export async function checkThenAcceptCookieConsent(page: Page) {
         if (await page.locator(btnAcceptCookie).count() > 0) {
             await page.click(btnAcceptCookie);
         }
-    } catch (error) { }
+    } catch (error){
+        console.log('No Accept Cookie Button detected!')
+    };
 }
