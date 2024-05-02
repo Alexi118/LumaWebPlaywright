@@ -23,19 +23,19 @@ export async function verifyUrl(page: Page, link?: string){
 }
 
 export async function goToPage(page: Page, link?: string){
+    const btnAcceptCookie = 'div[class="CookiePopup-CTA"]';
     if(link){
         await page.goto(`${baseURL}${link}`);
     }
     else {
         await page.goto(`${baseURL}`);
     }
-    await checkThenAcceptCookieConsent(page);
+    checkThenAcceptCookieConsent(page)
 }
 
 export async function checkThenAcceptCookieConsent(page: Page) {
     const btnAcceptCookie = 'div[class="CookiePopup-CTA"]';
     try {
-        await page.waitForSelector(btnAcceptCookie, {timeout: 30000});
         if (await page.locator(btnAcceptCookie).count() > 0) {
             await page.click(btnAcceptCookie);
         }
