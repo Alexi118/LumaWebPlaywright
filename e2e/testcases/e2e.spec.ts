@@ -26,6 +26,7 @@ test.describe("Test Full E2E Flow",()=>{
         await firstJacketPage.addCount_btn.click();
         await firstJacketPage.addToCart_btn.click();
         expect(await firstJacketPage.cartNumber_icon.innerText()).toBe('2');
+        
     })
 
     test.afterEach("Clear test data", async({page, firstJacketPage})=>{
