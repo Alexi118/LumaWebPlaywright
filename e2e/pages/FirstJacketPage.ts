@@ -1,5 +1,6 @@
 import {Locator, Page} from '@playwright/test';
-import * as common from '../common/commonAction';
+import * as commonAction from '../common/commonAction';
+import * as common from '../common/common';
 import { OptionType } from '../enum/dropdownOptionType';
 import { Color, Size } from '../enum/sizeAndColor';
 
@@ -15,6 +16,8 @@ export class FirstJacketPage{
     readonly cartNumber_icon: Locator;
     readonly cart_icon: Locator;
     readonly removeOnCart_btn: Locator;
+    readonly productprice_txt: Locator;
+    readonly productquatity_txt: Locator;
     
     constructor(page:Page){
         this.page = page;
@@ -28,19 +31,31 @@ export class FirstJacketPage{
         this.cartNumber_icon = page.locator(".Header-MinicartItemCount");
         this.removeOnCart_btn = page.locator("#RemoveItem");
         this.cart_icon = page.locator(".Header-MinicartButtonWrapper");
-
+        this.productprice_txt = page.locator(".ProductActions-Schema .ProductPrice-PriceValue");
+        this.productquatity_txt = page.locator("#item_qty");
     }
 
     async selectSize(size: Size){
-        await common.selectDropDown(this.size_selector, OptionType.LABEL, size);
+        await commonAction.selectDropDown(this.size_selector, OptionType.LABEL, size);
     }
 
     async selectColor(color: Color){
-        await common.selectDropDown(this.color_selector, OptionType.LABEL, color);
+        await commonAction.selectDropDown(this.color_selector, OptionType.LABEL, color);
     }
 
     async clearTestData(){
         await this.cart_icon.click();
         await this.removeOnCart_btn.click();
+    }
+
+    async getProductPriceAndQuantity(){
+        let totalprice: string;
+        let productprice: string = await common.getFloatInTextofElement(this.productprice_txt);
+        let productquantity: string = await common.getNumberInputValueofElement(this.productquatity_txt);
+        totalprice = common.productOfTwoNumberInString(productprice, productquantity);
+        console.log(`productprice = ${productprice}`);
+        console.log(`productquantity = ${productquantity}`);
+        console.log(`totalprice = ${totalprice}`);
+        return totalprice;
     }
 }

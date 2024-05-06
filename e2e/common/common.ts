@@ -7,6 +7,12 @@ export const getFloatInTextofElement = async (element: Locator)=>{
     return resultString;
 };
 
+export const getNumberInputValueofElement = async (element: Locator)=>{
+    let result = (await element.inputValue()).match(/[-+]?\d*\.\d+|\d+/g);
+    let resultString = result ? result.toString() : "";
+    return resultString;
+};
+
 export const getFloatInListTextOfElements = async (listOfElements:Locator)=>{
         let result = (await listOfElements.allInnerTexts()).map(x=>x.match(/[-+]?\d*\.\d+|\d+/g));
         let resultString = result.map(x=>x? x.toString() : "");
@@ -33,6 +39,12 @@ export const sumOfTwoNumberInString = (num1:string, num2:string)=>{
     let sum = 0;
     sum = parseFloat(num1) + parseFloat(num2);
     return sum.toFixed(2).toString();
+};
+
+export const productOfTwoNumberInString = (num1:string, num2:string)=>{
+    let product = 1;
+    product = parseFloat(num1) * parseFloat(num2);
+    return product.toFixed(2).toString();
 };
 
 export const sortListFromAtoZ = (listOfElements:string[])=>{
