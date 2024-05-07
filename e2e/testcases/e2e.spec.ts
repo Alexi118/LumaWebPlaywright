@@ -28,6 +28,7 @@ test.describe("Test Full E2E Flow",()=>{
         expect(await firstJacketPage.cartNumber_icon.innerText()).toBe('2');
         let total:string = await firstJacketPage.getProductPriceAndQuantity();
         await commonAction.goToPage(page, URLPath.CART);
+        
     })
 
     test.afterEach("Clear test data", async({page, firstJacketPage})=>{
