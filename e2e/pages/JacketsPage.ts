@@ -11,7 +11,7 @@ export class JacketsPage{
         this.firstItem_Title = page.locator(".ProductListPage li:nth-child(1) p");
     }
 
-    async action_AddToCart_FirstJacket(){
+    async action_Select_FirstJacket(){
         await this.firstJacketHover.hover();
         await this.firstItem_addToCart.click();
     }
