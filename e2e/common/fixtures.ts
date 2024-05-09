@@ -2,17 +2,19 @@ import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { JacketsPage } from '../pages/JacketsPage';
-import { FirstJacketPage } from '../pages/FirstJacketPage';
+import { JacketDetailPage } from '../pages/JacketDetailPage';
 import { CartPage } from '../pages/CartPage';
 
 import { ignoreLoadingRoutes } from './ignoreLoadingRoutes';
+import { ShippingPage } from '../pages/ShippingPage';
 
 type BaseTest = {
     loginPage: LoginPage;
     homePage: HomePage;
-    jacketPage: JacketsPage;
-    firstJacketPage: FirstJacketPage;
+    jacketsPage: JacketsPage;
+    jacketDetailPage: JacketDetailPage;
     cartPage: CartPage;
+    shippingPage: ShippingPage;
 };
 
 export const test = base.extend<BaseTest>({
@@ -26,17 +28,21 @@ export const test = base.extend<BaseTest>({
         await ignoreLoadingRoutes(page);
         await use(new HomePage(page));
     },
-    jacketPage:async ({page},use) => {
+    jacketsPage:async ({page},use) => {
         await ignoreLoadingRoutes(page);
         await use(new JacketsPage(page));
     },
-    firstJacketPage:async({page},use) => {
+    jacketDetailPage:async({page},use) => {
         await ignoreLoadingRoutes(page);
-        await use(new FirstJacketPage(page));
+        await use(new JacketDetailPage(page));
     },
     cartPage: async({page},use)=>{
         await ignoreLoadingRoutes(page);
         await use(new CartPage(page));
+    },
+    shippingPage: async ({page},use) => {
+        await ignoreLoadingRoutes(page);
+        await use(new ShippingPage(page));
     }
 });
 

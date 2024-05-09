@@ -4,7 +4,7 @@ import * as common from '../common/common';
 import { OptionType } from '../enum/dropdownOptionType';
 import { Color, Size } from '../enum/sizeAndColor';
 
-export class FirstJacketPage{
+export class JacketDetailPage{
     readonly page: Page;
     readonly item_Title: Locator;
     readonly color_selector: Locator;
@@ -35,11 +35,8 @@ export class FirstJacketPage{
         this.productquatity_txt = page.locator("#item_qty");
     }
 
-    async selectSize(size: Size){
+    async selectSizeAndColor(size: Size, color: Color){
         await commonAction.selectDropDown(this.size_selector, OptionType.LABEL, size);
-    }
-
-    async selectColor(color: Color){
         await commonAction.selectDropDown(this.color_selector, OptionType.LABEL, color);
     }
 
