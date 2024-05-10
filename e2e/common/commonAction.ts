@@ -37,7 +37,7 @@ export async function checkThenAcceptCookieConsent(page: Page) {
     const btnAcceptCookie = 'div[class="CookiePopup-CTA"]';
     try {
         if (await page.locator(btnAcceptCookie).count() > 0) {
-            await page.click(btnAcceptCookie);
+            await page.locator(btnAcceptCookie).click();
         }
     } catch (error){
         console.log('No Accept Cookie Button detected!');

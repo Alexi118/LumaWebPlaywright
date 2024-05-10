@@ -18,7 +18,7 @@ test.describe("Test Full E2E Flow",()=>{
         await expect(homePage.welcome_txt).toHaveText('Welcome, Nguyen!');
     })
 
-    // test("Test purchasing & paid successfully 1 item",async ({page,myaccPage,homePage,jacketsPage, jacketDetailPage, cartPage, billingPage, successPage}) => {
+    // test("Test purchasing & paid successfully 1 item",async ({page,myaccPage,homePage,jacketsPage, jacketDetailPage, cartPage, billingPage, successPage, myorderPage}) => {
     //     let totalOnDetailPage:string;
     //     let orderID:string;
     
@@ -63,12 +63,15 @@ test.describe("Test Full E2E Flow",()=>{
     //         await commonAction.goToPage(page, URLPath.ACCOUNTAFTERLOGIN);
     //         await myaccPage.my_orders.click();
     //         await commonAction.verifyUrl(page, URLPath.MYORDER);
+    //         await expect(myorderPage.load_icon).toHaveCount(0);
     //     })
     // })
 
     test('order list',async ({page, myorderPage})=>{
         commonAction.goToPage(page, URLPath.MYORDER);
         await commonAction.verifyUrl(page, URLPath.MYORDER);
+        await expect(myorderPage.load_icon).toHaveCount(0);
+        console.log(await myorderPage.table_order_column.allInnerTexts())
     })
 
     // test.afterEach("Clear test data", async({page, jacketDetailPage})=>{
