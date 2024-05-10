@@ -5,5 +5,7 @@ export enum URLPath{
     WOMEN = '/women.html',
     OLIVIAZIPLIGHTJACKET = '/olivia-1-4-zip-light-jacket.html',
     CART = '/cart',
-    SHIPPING = '/checkout/shipping'
+    SHIPPING = '/checkout/shipping',
+    SUCCESS = '/checkout/success',
+    MYORDER = '/sales/order/history',
 }

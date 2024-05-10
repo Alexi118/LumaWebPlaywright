@@ -1,27 +1,31 @@
 import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { MyaccPage } from '../pages/MyaccPage';
 import { HomePage } from '../pages/HomePage';
 import { JacketsPage } from '../pages/JacketsPage';
 import { JacketDetailPage } from '../pages/JacketDetailPage';
 import { CartPage } from '../pages/CartPage';
+import { BillingPage } from '../pages/BillingPage';
+import { SuccessPage } from '../pages/SuccessPage';
+import { MyorderPage } from '../pages/MyorderPage';
 
 import { ignoreLoadingRoutes } from './ignoreLoadingRoutes';
-import { ShippingPage } from '../pages/ShippingPage';
 
 type BaseTest = {
-    loginPage: LoginPage;
+    myaccPage: MyaccPage;
     homePage: HomePage;
     jacketsPage: JacketsPage;
     jacketDetailPage: JacketDetailPage;
     cartPage: CartPage;
-    shippingPage: ShippingPage;
+    billingPage: BillingPage;
+    successPage: SuccessPage;
+    myorderPage: MyorderPage;
 };
 
 export const test = base.extend<BaseTest>({
-    loginPage: async ({page},use)=>{
+    myaccPage: async ({page},use)=>{
         await ignoreLoadingRoutes(page);
-        const loginPage = new LoginPage(page);
-        await use(loginPage);
+        const myaccPage = new MyaccPage(page);
+        await use(myaccPage);
     },
     //short
     homePage:async ({page},use) => {
@@ -40,9 +44,17 @@ export const test = base.extend<BaseTest>({
         await ignoreLoadingRoutes(page);
         await use(new CartPage(page));
     },
-    shippingPage: async ({page},use) => {
+    billingPage: async ({page},use) => {
         await ignoreLoadingRoutes(page);
-        await use(new ShippingPage(page));
+        await use(new BillingPage(page));
+    },
+    successPage: async ({page},use) => {
+        await ignoreLoadingRoutes(page);
+        await use(new SuccessPage(page));
+    },
+    myorderPage: async ({page},use) => {
+        await ignoreLoadingRoutes(page);
+        await use(new MyorderPage(page));
     }
 });
 

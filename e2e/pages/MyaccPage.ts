@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { goToPage } from '../common/commonAction';
 import {URLPath} from '../enum/route'
 
-export class LoginPage{
+export class MyaccPage{
     readonly page: Page;
     readonly account_icon: Locator;
     readonly email_txt: Locator;
@@ -12,6 +12,7 @@ export class LoginPage{
     readonly logout_btn: Locator;
     readonly spinning_icon: Locator;
     readonly home_breadcrumb: Locator;
+    readonly my_orders: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -22,6 +23,7 @@ export class LoginPage{
         this.logout_btn = page.getByText('Logout');
         this.spinning_icon = page.locator('.Loader-Main');
         this.home_breadcrumb = page.locator('.Breadcrumb-Link').getByText('Home');
+        this.my_orders = page.locator('li[class=MyAccountTabListItem]:nth-child(2)');
     }
 
     async action_Login_LoginPage(page: Page, email: string, pass: string){

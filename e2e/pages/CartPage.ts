@@ -18,7 +18,7 @@ export class CartPage{
         this.check_out_btn = page.locator(".CartPage-CheckoutButtonWrapper");
         this.subtotal_currentprice_num = page.locator("p[class='ProductPrice CartItem-Price'] data");
         this.subtotal_summary_num = page.locator("li[class=CheckoutOrderSummary-SummaryItem]:nth-child(1) strong strong");
-        this.tax_num = page.locator("li[class=CheckoutOrderSummary-SummaryItem]:nth-child(2) strong strong");
+        this.tax_num = page.locator(":nth-match(strong:right-of(p:has-text('Tax')) strong, 2)");
         this.check_out_btn = page.locator(".CartPage-CheckoutButton");
         this.ordertotal_num = page.locator("li[class='CheckoutOrderSummary-SummaryItem CheckoutOrderSummary-SummaryItem_isTotal'] strong strong")
     }

@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { goToPage } from '../common/commonAction';
 import {URLPath} from '../enum/route'
 
-export class ShippingPage{
+export class BillingPage{
     readonly standard_shipping_btn: Locator;
     readonly postal_shipping_btn: Locator;
     readonly proceed_billing_btn: Locator;
