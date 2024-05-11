@@ -71,7 +71,7 @@ test.describe("Test Full E2E Flow",()=>{
         commonAction.goToPage(page, URLPath.MYORDER);
         await commonAction.verifyUrl(page, URLPath.MYORDER);
         await expect(myorderPage.load_icon).toHaveCount(0);
-        console.log(await myorderPage.table_order_column.allInnerTexts())
+        
     })
 
     // test.afterEach("Clear test data", async({page, jacketDetailPage})=>{

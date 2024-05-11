@@ -15,4 +15,8 @@ export class MyorderPage{
         this.table_total_column = page.locator('table[class=MyAccountMyOrders-Table] tbody tr td:nth-child(4)');
         this.load_icon = page.locator('div[class=Loader]');
     }
+
+    async verifyOrderIsExistedInList(){
+        
+    }
 }
