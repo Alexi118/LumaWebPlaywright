@@ -13,24 +13,24 @@ export function selectDropDown (element:Locator, selectBy: OptionType, value:any
     }
 };
 
-export async function verifyUrl(page: Page, link?: string){
+export async function verifyUrl(page: Page, link?: string, timeout?: number){
     if(link){
-        return await page.waitForURL(`${baseURL}${link}`, {waitUntil: 'load', timeout: 30000});
+        return await page.waitForURL(`${baseURL}${link}`, {waitUntil: 'load', timeout: timeout});
     }
     else{
-        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load', timeout: 30000});
+        return await page.waitForURL(`${baseURL}`, {waitUntil: 'load', timeout: timeout});
     }
 }
 
-export async function goToPage(page: Page, link?: string){
+export async function goToPage(page: Page, link?: string, timeout?: number){
     const btnAcceptCookie = 'div[class="CookiePopup-CTA"]';
     if(link){
-        await page.goto(`${baseURL}${link}`,{waitUntil: 'load',timeout: 30000});
+        await page.goto(`${baseURL}${link}`,{waitUntil: 'load',timeout: timeout});
     }
     else {
-        await page.goto(`${baseURL}`,{waitUntil: 'load',timeout: 30000});
+        await page.goto(`${baseURL}`,{waitUntil: 'load',timeout: timeout});
     }
-    checkThenAcceptCookieConsent(page);
+    await checkThenAcceptCookieConsent(page);
 }
 
 export async function checkThenAcceptCookieConsent(page: Page) {
@@ -40,6 +40,6 @@ export async function checkThenAcceptCookieConsent(page: Page) {
             await page.locator(btnAcceptCookie).click();
         }
     } catch (error){
-        console.log('No Accept Cookie Button detected!');
+        console.error('No Accept Cookie Button detected!');
     };
 }

@@ -4,11 +4,11 @@ export async function ignoreLoadingRoutes(page:Page) {
     await page.route('**/*', (route)=>{
         const resourceType = route.request().resourceType();
 
-        if (['image', 'stylesheet', 'font'].includes(resourceType)){
-            route.abort().catch(()=>{});
+        if (['image'].includes(resourceType)){
+            route.abort();
         }
         else{
-            route.continue().catch(()=>{});
+            route.continue();
         }
     });
 }

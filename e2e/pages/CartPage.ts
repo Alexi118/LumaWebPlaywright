@@ -35,7 +35,7 @@ export class CartPage{
         let subtotalCurrent = await common.getFloatInTextofElement(this.subtotal_currentprice_num);
         let subtotalSummary = await common.getFloatInTextofElement(this.subtotal_summary_num);
         if(subtotalCurrent === subtotalSummary){
-            console.log(`current total is equal to summary total`);
+            console.log(`current total is equal to summary total!`);
         }
         console.log(`total on detail page = ${subtotalCurrent}, total on cart page = ${subtotalSummary}`);
     }
