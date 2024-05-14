@@ -4,8 +4,6 @@ import * as common from "../common/common";
 import * as commonAction from "../common/commonAction";
 import {URLPath} from "../enum/route";
 import {Size, Color} from "../enum/sizeAndColor";
-import { baseURL } from '../data/constant';
-import { MyaccPage } from '../pages/MyaccPage';
 
 test.describe("Test Full E2E Flow",()=>{
 
@@ -18,7 +16,7 @@ test.describe("Test Full E2E Flow",()=>{
         await expect(homePage.welcome_txt).toHaveText('Welcome, Nguyen!');
     })
 
-    test("Test purchasing & paid successfully 1 item",async ({page,myaccPage,homePage,jacketsPage, jacketDetailPage, cartPage, billingPage, successPage, myorderPage}) => {
+    test("Test purchasing & paid successfully 1 item",async ({page, myaccPage, homePage, jacketsPage, jacketDetailPage, cartPage, billingPage, successPage, myorderPage}) => {
         let totalOnDetailPage:string;
         let orderID:string;
         let orderList:string[];
@@ -71,10 +69,4 @@ test.describe("Test Full E2E Flow",()=>{
             expect(orderList).toContain(orderID);
         })
     })
-
-    // test.afterEach("Clear test data", async({page, jacketDetailPage})=>{
-    //     await commonAction.goToPage(page, URLPath.OLIVIAZIPLIGHTJACKET);
-    //     await jacketDetailPage.clearTestData();
-    //     await expect(jacketDetailPage.cartNumber_icon).toBeHidden();
-    // })
 })
